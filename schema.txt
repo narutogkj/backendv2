@@ -1,0 +1,30 @@
+File upload Schema
+------------------------------------------------------------------
+    1) file ID -  FI-1234
+    2) Company Name - ABC ltd
+    3) Report Name - [ 
+                    Cash Discrepancy report,  
+                    Credit card Discrepancy report, 
+                    EPay Discrepancy report,
+                    GP Report - Sample report,
+
+                    Commission Recon Summary,
+                    Disqualified summary report,
+                    Sales Tax report,
+
+                    Aged Inventory Report,
+                    Sales Trend report
+                ]
+    4) Report Type - [ Daily, Weekly, Monthly ]
+    5) Starting Date - 7/12/2012
+    6) Ending Date - 14/12/2012
+    7) File Name - abs1600000
+    8) File Source - http://localhost:3000/abc.excel
+ 
+
+Customer Schema
+-------------------------------------------------------------------
+    1)Name         -   Gopal
+    2)Email        -   Gopal@mail.com
+    3)Password     -   12345
+    4)Company Name -   ABC ltd
