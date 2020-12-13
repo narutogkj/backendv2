@@ -85,15 +85,16 @@ exports.updateUser = (data, callBack) => {
 }
 
 
-exports.deleteUser = (data, callBack) => {
+exports.deleteUser = (id, callBack) => {
+    console.log('service', id)
     pool.query(
         `delete from registration where id = ?`,
-        [data.id],
+        [id],
         (error, results, fields) => {
             if (error) {
                 callBack(error);
             }
-            return callBack(null, results[0]);
+            return callBack(null, results);
         }
     );
 }
