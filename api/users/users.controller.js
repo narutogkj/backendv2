@@ -102,7 +102,9 @@ exports.updateUsers = (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
     body.password = hashSync(body.password, salt);
-    updateUser(body, (err, results) => {
+    body.newpassword = hashSync(body.newpassword, salt);
+    console.log(body.newpassword == body.password)
+    updateUser(req.params.id, body, (err, results) => {
         if (err) {
             console.log(err);
             return;
@@ -114,13 +116,13 @@ exports.updateUsers = (req, res) => {
     });
 }
 exports.deleteUser = (req, res) => {
-    const data = req.body;
-    deleteUser(data, (err, results) => {
+    const id = req.params.id;
+    deleteUser(id, (err, results) => {
         if (err) {
             console.log(err);
             return;
         }
-        if (!results) {
+        if (results.affectedRows == 0) {
             return res.json({
                 success: 0,
                 message: "Record Not Found"

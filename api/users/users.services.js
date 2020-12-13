@@ -63,37 +63,38 @@ exports.getUsers = callBack => {
 }
 
 
-exports.updateUser = (data, callBack) => {
+exports.updateUser = (id, data, callBack) => {
+    console.log(data.newpassword)
     pool.query(
-        `update registration set firstName=?, lastName=?, gender=?, email=?, password=?, number=? where id = ?`,
+        `update registration set firstName=?, lastName=?, password=?,userName=?,company=?  where id = ?`,
         [
-            data.first_name,
-            data.last_name,
-            data.gender,
-            data.email,
-            data.password,
-            data.number,
-            data.id
+            data.firstName,
+            data.lastName,
+            data.newpassword,
+            data.userName,
+            data.company,
+            id
         ],
         (error, results, fields) => {
             if (error) {
                 callBack(error);
             }
-            return callBack(null, results[0]);
+            return callBack(null, results);
         }
     );
 }
 
 
-exports.deleteUser = (data, callBack) => {
+exports.deleteUser = (id, callBack) => {
+    console.log('service', id)
     pool.query(
         `delete from registration where id = ?`,
-        [data.id],
+        [id],
         (error, results, fields) => {
             if (error) {
                 callBack(error);
             }
-            return callBack(null, results[0]);
+            return callBack(null, results);
         }
     );
 }
