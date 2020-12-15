@@ -50,7 +50,8 @@ exports.salesTrendReport = (req, res) => {
 exports.salesTrendReportWithCondition = (req, res) => {
     let store = JSON.parse(req.params.store);
     let product = JSON.parse(req.params.product);
-
+    let startDate = JSON.parse(req.params.startDate);
+    let endDate = JSON.parse(req.params.endDate);
     let sqlString = `SELECT * FROM sales_trend_report where clientName = '${req.params.clientName}' `;
 
 
@@ -72,8 +73,10 @@ exports.salesTrendReportWithCondition = (req, res) => {
     }
     productString += ')'
 
+    let dateString = ` Trans_Date_Time >= ${startDate} AND Trans_Date_Time <= ${endDate} `;
 
-    sqlString = `${sqlString} AND ${storeString} AND ${productString}`;
+
+    sqlString = `${sqlString} AND ${storeString} AND ${productString} AND ${dateString}`;
     selectWithCondition(sqlString, (err, results) => {
         if (err) {
             console.log(err);

@@ -6,6 +6,6 @@ const { salesTrendReport, salesTrendReportWithCondition } = require("./slt.contr
 
 router.post("/:clientName", postData);
 router.get('/:clientName', salesTrendReport)
-router.get('/:clientName/:store/:product', salesTrendReportWithCondition)
+router.get('/:clientName/:store/:product/:startDate/:endDate', salesTrendReportWithCondition)
 
 module.exports = router;
