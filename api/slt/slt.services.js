@@ -153,3 +153,12 @@ exports.getDataFromSalesTrend = (clientName, callBack) => {
         }
     );
 }
+
+exports.selectWithCondition = (sqlString, callBack) => {
+    pool.query(`${sqlString}`, [], (error, results, fields) => {
+        if (error) {
+            callBack(error);
+        }
+        return callBack(null, results);
+    })
+}
